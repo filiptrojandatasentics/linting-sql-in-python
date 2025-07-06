@@ -1,0 +1,16 @@
+[sqlfluff]
+templater = jinja
+dialect = postgres
+exclude_rules = L034
+
+[sqlfluff:indentation]
+tab_space_size = 4
+
+[sqlfluff:templater:jinja]
+apply_dbt_builtins = True
+
+[sqlfluff:rules:L010]
+capitalisation_policy = upper
+
+[sqlfluff:rules:L030]
+capitalisation_policy = upper
