@@ -10,7 +10,7 @@ dependencies = [
 ]
 
 [tool.sqlfluff.core]
-dialect = "postgres"
+dialect = "bigquery"
 max_line_length = 120
 templater = "jinja"
 sql_file_exts = ".sql,.sql.j2,.dml,.ddl"
