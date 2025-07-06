@@ -1,32 +1,31 @@
-WITH user_stats AS (
-                    SELECT 
-                        u.user_id,
-                        u.username,
-                        u.status,
-                        COUNT(o.order_id) as order_count,
-                        SUM(o.total_amount) as total_spent
-                    FROM {{ users_table }} u
-                    LEFT JOIN {{ orders_table }} o ON u.user_id = o.user_id
-                    {% if date_filter %}
-                    WHERE o.created_at >= '{{ date_filter }}'
-                    {% endif %}
-                    GROUP BY u.user_id, u.username, u.status
-                )
-                SELECT 
-                    username,
-                    status,
-                    order_count,
-                    total_spent,
-                    CASE 
-                        WHEN total_spent > {{ high_value_threshold }} THEN 'High Value'
-                        WHEN total_spent > {{ medium_value_threshold }} THEN 'Medium Value'
-                        ELSE 'Low Value'
-                    END as customer_tier
-                FROM user_stats
-                {% if min_orders %}
-                WHERE order_count >= {{ min_orders }}
-                {% endif %}
-                ORDER BY total_spent DESC
-                {% if limit %}
-                LIMIT {{ limit }}
-                {% endif %};
+with user_stats as (
+    select
+        u.user_id
+        , u.username
+        , u.status
+        , count(o.order_id) as order_count
+        , sum(o.total_amount) as total_spent
+    from {{ users_table }} as u
+    left join {{ orders_table }} as o on u.user_id = o.user_id
+    {% if date_filter %}
+    where o.created_at >= '{{ date_filter }}'
+    {% endif %}
+    group by u.user_id, u.username, u.status
+)
+select
+    username
+    , status
+    , order_count
+    , total_spent
+    , case
+        when total_spent > {{ high_value_threshold }} then 'High Value'
+        when total_spent > {{ medium_value_threshold }} then 'Medium Value'
+        else 'Low Value'
+    end as customer_tier
+from user_stats
+{% if min_orders %}
+where order_count >= {{ min_orders }}
+{% endif %}
+order by total_spent desc
+{% if limit %}
+limit {{ limit }}{% endif %};

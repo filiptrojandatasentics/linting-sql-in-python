@@ -37,8 +37,17 @@ apply_dbt_builtins = true
 table_name = "my_table"
 username_length = 32
 users = [{"user.username" = "fido", "user.email" = "ff", "user.status" = "ok"}, {"user.username" = "karel", "user.email" = "kk", "user.status" = "left"}]
+status = "ok"
+user_id = 123
 new_status = "ok"
 user_ids = [1, 2, 3]
+users_table = "users"
+orders_table = "orders"
+date_filter = "2025-05-25"
+min_orders = 1
+limit = 100
+high_value_threshold = 1000
+medium_value_threshold = 500
 
 # For rule specific configuration, use dots between the names exactly
 # as you would in .sqlfluff. In the background, SQLFluff will unpack the

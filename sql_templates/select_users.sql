@@ -6,8 +6,8 @@ select
 from users
 where
     status = '{{ status }}'
-{% if user_id %} and user_id = {{ user_id }}
+    {% if user_id %} and user_id = {{ user_id }}
 {% endif %}
 {% if limit %}
-    limit {{ limit }}
+limit {{ limit }}
 {% endif %}
