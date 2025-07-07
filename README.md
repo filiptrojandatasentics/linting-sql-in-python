@@ -14,3 +14,9 @@ On `main` branch to see all the linting issues.
 Run the same on the `fix_sql` branch to demo all the issues resolved for postgres.
 
 Run the same on the `fix_bigquery` branch to demo that no changes are needed for bigquery.
+
+Run
+```shell
+uv run sqlfluff lint dataform/
+```
+on `fix_bigquery` and then on `fix_dataform` to demo the change.
