@@ -1,25 +1,25 @@
 config { type: "table", schema: "marts" }
 
-WITH step1 AS (
-  SELECT customer_id, name, email
-  FROM ${ref("raw_customers")}
-  WHERE active = true
-),
-
-step2 AS (
-  SELECT 
-    customer_id,
-    UPPER(name) as name,
-    email,
-    CURRENT_TIMESTAMP() as processed_at
-  FROM step1
-),
-
-step3 AS (
-  SELECT 
-    *,
-    ROW_NUMBER() OVER (PARTITION BY email ORDER BY processed_at) as rn
-  FROM step2
+with step1 as (
+    select
+        customer_id
+        , customer_name
+        , email
+    from ${ref("raw_customers")}
+    where active = true
+), step2 as (
+    select
+        customer_id
+        , email
+        , upper(customer_name) as customer_name
+        , current_timestamp() as processed_at
+    from step1
+), step3 as (
+    select
+        *
+        , row_number() over (partition by email order by processed_at) as rn
+    from step2
 )
 
-SELECT * FROM step3 WHERE rn = 1
+select * from step3
+where rn = 1

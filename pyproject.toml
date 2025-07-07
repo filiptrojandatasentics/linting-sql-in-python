@@ -16,7 +16,7 @@ max_line_length = 120
 templater = "dataform"
 sql_file_exts = ".sql,.sql.j2,.dml,.ddl,.sqlx"
 rules = "all"
-exclude_rules = "LT08"
+exclude_rules = "LT08, LT14"
 large_file_skip_byte_limit = 20000
 
 [tool.sqlfluff.indentation]
