@@ -1,0 +1,11 @@
+config {
+  type: "table",
+  schema: "staging"
+}
+
+SELECT 
+  customer_id,
+  customer_name,
+  email
+FROM ${ref("raw_customers")}
+WHERE customer_id IS NOT NULL

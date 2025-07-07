@@ -1,0 +1,15 @@
+config { 
+  type: "table",
+  hasOutput: true
+}
+
+pre_operations {
+  CREATE TEMP TABLE temp_processing AS 
+  SELECT * FROM ${ref("source")} WHERE condition = true
+}
+
+SELECT * FROM temp_processing
+
+post_operations {
+  DROP TABLE IF EXISTS temp_processing
+}
