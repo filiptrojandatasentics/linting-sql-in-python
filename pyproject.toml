@@ -6,13 +6,14 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "jinja2>=3.1.6",
-    "sqlfluff>=3.4.1",
+    "sqlfluff-templater-dataform>=0.1.6",
+    "sqlfluff>=3.4.0",
 ]
 
 [tool.sqlfluff.core]
 dialect = "bigquery"
 max_line_length = 120
-templater = "jinja"
+templater = "dataform"
 sql_file_exts = ".sql,.sql.j2,.dml,.ddl,.sqlx"
 rules = "all"
 exclude_rules = "LT08"

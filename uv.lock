@@ -74,12 +74,14 @@ source = { virtual = "." }
 dependencies = [
     { name = "jinja2" },
     { name = "sqlfluff" },
+    { name = "sqlfluff-templater-dataform" },
 ]
 
 [package.metadata]
 requires-dist = [
     { name = "jinja2", specifier = ">=3.1.6" },
-    { name = "sqlfluff", specifier = ">=3.4.1" },
+    { name = "sqlfluff", specifier = ">=3.4.0" },
+    { name = "sqlfluff-templater-dataform", specifier = ">=0.1.6" },
 ]
 
 [[package]]
@@ -281,7 +283,7 @@ wheels = [
 
 [[package]]
 name = "sqlfluff"
-version = "3.4.1"
+version = "3.4.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "chardet" },
@@ -297,9 +299,21 @@ dependencies = [
     { name = "tblib" },
     { name = "tqdm" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/63/69/5511d12d18e14870fc70a70dde9d795cd315caa53e351df8b7df6037a0cb/sqlfluff-3.4.1.tar.gz", hash = "sha256:3c03464be46cfe7c83d11a753d5aa76f7b8e030ff018d5e61a8683d43002f31e", size = 890676 }
+sdist = { url = "https://files.pythonhosted.org/packages/37/9f/501f119821c8e1eaccf079a0f82428e84a3411bd6a2f7a418620689c769d/sqlfluff-3.4.0.tar.gz", hash = "sha256:6e1ea2d39b20cc791a1a009c234afaf043b448c7f2eb1c11551316fb41f36f47", size = 882079 }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/1c/0e/91112893cdcc40322255a8de84294ae7fea15b68f1dee8849a6858679e7e/sqlfluff-3.4.1-py3-none-any.whl", hash = "sha256:caa262247763dd2cb10bc437cb91d57e0b8e534277b30d7e3beae6dfec946422", size = 892347 },
+    { url = "https://files.pythonhosted.org/packages/6c/c9/477317d2b9ebba9fbdc20190d7bc06c0e9d08dcf6ca3bdb87661df6ff8b7/sqlfluff-3.4.0-py3-none-any.whl", hash = "sha256:115e3f1bf1dc1318c58426ba3299eb682642cb67b5d12d9ea7c42b5e23aeabd6", size = 886362 },
+]
+
+[[package]]
+name = "sqlfluff-templater-dataform"
+version = "0.1.6"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "sqlfluff" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/13/4b/9994aebd1e8c49b065e7f6f6cafd4cc86367a5819c2ae94a2334066bc3b8/sqlfluff_templater_dataform-0.1.6.tar.gz", hash = "sha256:1606482bd0126719eebda9cea1ee749b59d71d627402dc48fdb76b43674eabc5", size = 4549 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/09/56/8cb60aef72a1319e271bf24388fcf73e84840f7784a971abc20061ca64ea/sqlfluff_templater_dataform-0.1.6-py3-none-any.whl", hash = "sha256:7cacf9b866283b87708e602b4c6e8752b914c7a18a867437c10469131f5bd331", size = 6044 },
 ]
 
 [[package]]
