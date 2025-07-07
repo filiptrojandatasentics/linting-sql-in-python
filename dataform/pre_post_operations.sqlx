@@ -4,12 +4,12 @@ config {
 }
 
 pre_operations {
-  CREATE TEMP TABLE temp_processing AS 
-  SELECT * FROM ${ref("source")} WHERE condition = true
+  create temp table temp_processing as 
+  select * from ${ref("source")} where condition = true
 }
 
-SELECT * FROM temp_processing
+select * from temp_processing
 
 post_operations {
-  DROP TABLE IF EXISTS temp_processing
+  drop table if exists temp_processing
 }
