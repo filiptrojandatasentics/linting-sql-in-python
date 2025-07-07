@@ -1,8 +1,8 @@
 config { type: "table", schema: "marketing_marts" }
 
-SELECT 
-  m.*,
-  s.revenue_data
-FROM ${ref("marketing_leads")} m
-LEFT JOIN `my-project.sales_marts.customer_revenue` s  -- Reference sales repo output
-  ON m.lead_id = s.customer_id
+select
+    m.*
+    , s.revenue_data
+from ${ref("marketing_leads")} as m
+left join `my-project.sales_marts.customer_revenue` as s  -- Reference sales repo output
+    on m.lead_id = s.customer_id
